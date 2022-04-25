@@ -10,14 +10,14 @@ import Config
 # Configures the endpoint
 config :drainer_bug, DrainerBugWeb.Endpoint,
   url: [host: "localhost"],
-  # endpoint_config: [
-  #   http: [
-  #     drainer: [refs: [DrainBugWeb.Endpoint.HTTP], shutdown: :infinity]
-  #   ],
-  #   https: [
-  #     drainer: [refs: [DrainBugWeb.Endpoint.HTTPS], shutdown: :infinity]
-  #   ]
-  # ],
+  endpoint_config: [
+    http: [
+      drainer: [refs: [DrainBugWeb.Endpoint.HTTP], shutdown: :infinity]
+    ],
+    https: [
+      drainer: [refs: [DrainBugWeb.Endpoint.HTTPS], shutdown: :infinity]
+    ]
+  ],
   render_errors: [view: DrainerBugWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: DrainerBug.PubSub,
   live_view: [signing_salt: "P6FRv7YK"]

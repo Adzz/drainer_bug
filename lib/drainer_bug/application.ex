@@ -7,6 +7,14 @@ defmodule DrainerBug.Application do
 
   @impl true
   def start(_type, _args) do
+    # This wires up the handler, erlang calls :init on OSSignalHandler for us.
+    :ok =
+      :gen_event.swap_handler(
+        :erl_signal_server,
+        {:erl_signal_handler, []},
+        {OSSignalHandler, []}
+      )
+
     children = [
       # Start the Telemetry supervisor
       DrainerBugWeb.Telemetry,

@@ -3,7 +3,7 @@ defmodule DrainerBugWeb.PageController do
   require Logger
 
   def index(conn, _params) do
-    Logger.info("sleeping")
+    Logger.info("sleeping for 60 seconds")
     Process.sleep(60000)
     render(conn, "index.html")
   end
